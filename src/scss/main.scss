@@ -1,0 +1,26 @@
+@import "~bulma/bulma.sass"; //../../node_modules/bulma.sass
+body{
+  margin: 0;
+}
+.columns{
+  display: flex;
+  flex-direction: column;
+  margin-top:20px;
+  color: black;
+}
+.buttons{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  & input{
+    margin-top:10px;
+  }
+}
+  .results {
+    margin-top: 50px;
+  }
+
+  .is-active {
+    border: 3px #23d160 solid;
+  }
