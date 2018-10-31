@@ -8,7 +8,7 @@
     <section class="section" v-show="!isLoading">
       <nav class="nav">
         <div class="container">
-          <input class="input is-large" type="text" placeholder="Buscar canciones" v-model="searchQuery"/>
+          <input class="input is-large" type="text" placeholder="Buscar canciones" v-model="searchQuery " @keyup.enter="search"/>
           <div class="buttons">
             <a class="button is-info is-large" @click="search">Buscar</a>
             <a class="button is-danger is-large" @click="cancel">&times;</a>
@@ -21,7 +21,7 @@
       <div class="container results">
         <div class="columns is-multiline">
           <div class="column is-one-quarter" v-for="t in tracks">
-            <pm-track :class="{ 'is-active': t.id === selectedTrack }" :track="t" @select="setSelectedTrack"></pm-track>
+            <pm-track v-blur="t.preview_url" :class="{ 'is-active': t.id === selectedTrack }" :track="t" @select="setSelectedTrack"></pm-track>
           </div>
         </div>
       </div>
@@ -76,7 +76,7 @@ export default {
       if (!this.searchQuery) { return }
 
       this.isLoading = true
-
+      this.tracks = []
       trackService.search(this.searchQuery)
         .then(res => {
           this.showNotification = true

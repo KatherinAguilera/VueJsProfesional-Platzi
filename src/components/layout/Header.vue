@@ -6,6 +6,8 @@
         <div class="nav-left">
           <div class="nav-item"><strong>📻  Platzi Music</strong></div>
           <div class="nav-right nav-menu"></div>
+          <router-link class="nav-item" :to="{ name: 'search' }">Buscar</router-link>
+          <router-link class="nav-item" to="about">Nosotros</router-link>
         </div>
       </div>
     </header>

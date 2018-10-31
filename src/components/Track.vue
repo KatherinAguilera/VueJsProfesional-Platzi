@@ -1,5 +1,5 @@
 <template lang="pug">
-  <div class="card is-2">
+  <div class="card is-2" v-if="track && track.album">
     <div class="center-img">
       <figure class=""><img :src="track.album.images[0].url"/></figure>
     </div>
@@ -13,12 +13,14 @@
           <p class="subtitle is-6">{{ track.artists[0].name }}</p>
         </div>
       </div>
-      <div class="content"><small>{{ track.duration_ms }}</small>
+      <div class="content">
+        <small>{{ track.duration_ms | ms-to-mm }}</small>
         <nav class="level">
-          <div class="level-left">
-          <a class="level-item">
-          <span class="icon is-small" @click="selectTrack" >▶️</span>
-          </a>
+          <div class="level-left ">
+            <button class="level-item button is-primary" @click="selectTrack" >▶️
+            </button>
+            <button class="level-item button is-warning" @click="goToTrack(track.id)">🌎
+            </button>
           </div>
         </nav>
       </div>
@@ -33,9 +35,15 @@ export default {
   },
   methods: {
     selectTrack () {
+      if (!this.track.preview_url) { return }
       // $emit funcion de vue emitir evento ('' , que es lo que le queremos mandar al padre)
       this.$emit('select', this.track.id)
       this.$bus.$emit('set-track', this.track)
+    },
+
+    goToTrack (id) {
+      if (!this.track.preview_url) { return }
+      this.$router.push({ name: 'track', params: { id } })
     }
   }
 }
