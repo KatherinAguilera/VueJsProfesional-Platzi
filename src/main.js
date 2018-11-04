@@ -6,6 +6,7 @@ import blur from '@/directives/blur'
 
 import msToMm from '@/filters/ms-to-mm'
 import routes from '@/routes'
+import store from '@/store'
 
 import EventBus from '@/plugins/event-bus'
 
@@ -26,5 +27,6 @@ new Vue({
   el: '#app',
   render: h => h(App),
   // a la instancia de vue le pasamos router que contienen todas nuestras rutas
-  router
+  router,
+  store
 })

@@ -1,10 +1,13 @@
 <template lang="pug">
   <main>
+    <transition name="move">
     <pm-notification :typeNotification="hasData" v-show="showNotification">
       <p v-if="hasData" slot="body">No se encontraron resultados</p>
       <p v-else="v-else" slot="body">{{ searchMessage }}</p>
     </pm-notification>
-    <pm-loader v-show="isLoading"></pm-loader>
+    </transition>
+    <transition name="move">
+    <pm-loader v-show="isLoading"></pm-loader>  </transition>
     <section class="section" v-show="!isLoading">
       <nav class="nav">
         <div class="container">
@@ -16,7 +19,7 @@
         </div>
       </nav>
       <div class="container">
-        <p><small>{{ searchMessage }}</small></p>
+        <p class="found"><small>{{ searchMessage }}</small></p>
       </div>
       <div class="container results">
         <div class="columns is-multiline">
@@ -104,5 +107,9 @@ export default {
 
   .is-active {
     border: 3px #23d160 solid;
+  }
+  .found{
+    letter-spacing: 3px;
+    
   }
 </style>

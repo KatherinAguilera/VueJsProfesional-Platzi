@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="container">
       <div class="content has-text-centered">
-        <p> 💻 with ❤️ by @ianaya89</p>
+        <p> 💻 With ❤️ Made in VueJs </p>
       </div>
     </div>
   </footer>

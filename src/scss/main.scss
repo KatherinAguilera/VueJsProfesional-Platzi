@@ -23,3 +23,11 @@ body{
   .is-active {
     border: 3px #23d160 solid;
   }
+
+.move-enter-active, .move-leave-active {
+  transform: translateX(0);
+  transition: all .3s linear;
+}
+.move-enter-active, .move-leave-active {
+  transform: translateX(100%);
+}
